@@ -36,3 +36,16 @@ Ketika menjalankan server, server akan terconnect atau listening kepada request 
 
 1. Apa yang dimodifikasi? <br />
 Saya memodifikasi komunikasi antara server dan client dari port 2000 ke 8080. Saya memodifikasi portnya di client.rs dan server.rs karena menggunakan WebSocket protocol di sisi client sehingga harus reference ke port yang sama untuk dapat berkomunikasi dengan baik. Kemudian di sisi server menggunakan TcPListener yang merefer ke port yang sama yaitu 8080. Selain itu kinerja dan alur komunikasi antara server dan client sama seperti pada 2.1
+
+## 2.3 Small changes. Add some information to client
+- Server
+![broadcast11](images/broadcast11.png)
+- Client 1
+![broadcast12](images/broadcast12.png)
+- Client 2
+![broadcast13](images/broadcast13.png)
+- Client 3
+![broadcast14](images/broadcast14.png)
+
+1. Apa yang dimodifikasi? <br />
+Saya memodifikasi file client.rs pada line 23 menjadi `println!("Alyssa's Computer - From server: {}", text);` dan pada file server.rs ditambah `bcast_tx.send(format!("{addr}: {text}"))?;` pada line 25. Tujuannya agar menampilkan IP dan Port dari client sebagai identifier dari setiap client. 
